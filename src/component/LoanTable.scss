@@ -1,0 +1,15 @@
+.loan_table {
+  border: 1px solid #1a1720;
+  width: 100%;
+  .table_row {
+    th {
+      text-align: left;
+    }
+    th,
+    td {
+      width: 50%;
+      height: 2.5rem;
+      border: 1px solid #1a1720;
+    }
+  }
+}

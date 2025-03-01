@@ -1,0 +1,19 @@
+.table {
+  width: 100%;
+  border: 1px solid #1a1720;
+  margin-bottom: 2rem;
+  th {
+    border: 1px solid #1a1720;
+    height: 2.5rem;
+  }
+  .emi_row {
+    text-align: center;
+    height: 2.5rem;
+    td {
+      border: 1px solid #1a1720;
+    }
+  }
+  .year {
+    background-color: #1a1720;
+  }
+}

@@ -1,0 +1,43 @@
+.section_two {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  input {
+    width: calc(100% - 1rem);
+    background-color: rgb(104, 98, 121);
+    border: none;
+    height: 3rem;
+    outline: none;
+    padding-left: 1rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-weight: 300;
+    &:focus {
+      background-color: rgb(184, 180, 193);
+    }
+  }
+  .button_section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .button {
+      width: 40%;
+      background-color: #1a1720;
+      border: none;
+      cursor: pointer;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      color: #fff;
+      font-size: 1.5rem;
+      &:hover {
+        background-color: #16141b;
+        color: rgb(227, 227, 227);
+      }
+    }
+  }
+}

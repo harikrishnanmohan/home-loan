@@ -104,33 +104,33 @@ function App() {
       Month: `${month - 1} (${Math.floor((month - 1) / 12)}.${
         (month - 1) % 12
       } Year)`,
-      "Loan Amount": toIndianCurrency(+loanAmount),
-      "Total Interest Paid": toIndianCurrency(totalAmountPaid - loanAmount),
-      "Toal Amount Paid": toIndianCurrency(totalAmountPaid),
-      "Extra Principle Paid Monthly": toIndianCurrency(extraPrinciple),
-      "Total Extra Principle Paid": toIndianCurrency(
+      "Loan amount": toIndianCurrency(+loanAmount),
+      "Total interest paid": toIndianCurrency(totalAmountPaid - loanAmount),
+      "Total amount paid": toIndianCurrency(totalAmountPaid),
+      "Extra principle paid monthly": toIndianCurrency(extraPrinciple),
+      "Total principle paid extra": toIndianCurrency(
         month === month2 ? 0 : totalExtraPrinciple
       ),
-      "Toata Amount If Extra Principle Paid": toIndianCurrency(
+      "Total amount- If extra principle paid": toIndianCurrency(
         totalAmountPaid + totalExtraPrinciple === totalAmountPaid
           ? 0
           : totalAmountPaid + totalExtraPrinciple
       ),
-      "Total Amount To Be Paid If No Extra Principle Paid": toIndianCurrency(
+      "Total amount to be paid - If no extra principle paid": toIndianCurrency(
         month === month2 ? 0 : totalAmountPaid2
       ),
-      "Moth If No Extra Principle Paid":
+      "Number of months - If no extra principle paid":
         month === month2
           ? 0
           : `${month2 - 1} (${Math.floor((month2 - 1) / 12)}.${
               (month2 - 1) % 12
             } Year)`,
-      "Amount Saved": toIndianCurrency(
+      "Amount saved": toIndianCurrency(
         totalAmountPaid2 -
           totalAmountPaid -
           extraPrinciple * (month - 1 - fromMonth)
       ),
-      "Months Saved":
+      "Months saved":
         month === month2
           ? 0
           : `${month2 - 1 - (month - 1)} (${Math.floor(

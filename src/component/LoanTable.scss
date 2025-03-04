@@ -13,3 +13,11 @@
     }
   }
 }
+@media (max-width: 445px) {
+  table {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+    font-size: 16px;
+  }
+}

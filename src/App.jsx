@@ -153,6 +153,9 @@ function App() {
           <p>Borrow Wisely </p>
           <p>B– Your Home Loan, </p>
           <p>Calculated!</p>
+          <p className="section_one_small">
+            Plan Smart, Borrow Wisely, B– Your Home Loan, Calculated!
+          </p>
         </div>
         <LoanForm handleCalculate={handleCalculate} handleReset={handleReset} />
       </div>

@@ -59,3 +59,24 @@
     }
   }
 }
+@media (max-width: 445px) {
+  .section_two {
+    flex-direction: column;
+    gap: 1rem;
+    input {
+      width: calc(100% - 1rem);
+      height: 2.5rem;
+      font-size: 1rem;
+      padding-left: 0.5rem;
+    }
+    .button_section {
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 0.25rem;
+      .button {
+        width: 100%;
+        padding: 0.6rem;
+      }
+    }
+  }
+}

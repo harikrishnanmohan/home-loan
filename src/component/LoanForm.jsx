@@ -27,7 +27,7 @@ const LoanForm = ({ handleCalculate, handleReset }) => {
         type="number"
         placeholder="From Month (if entering extra principle)"
         name="fromMonth"
-        min={7}
+        min={1}
       />
       <div className="button_section">
         <button type="reset" className="button reset" onClick={onReset}>

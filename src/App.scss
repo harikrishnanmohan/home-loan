@@ -1,81 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+  --surface-0: #000000;
+  --surface-1: #111111;
+  --surface-2: #1a1a1a;
+  --gray-1: #ffffff;
+  --gray-2: #a3a3a3;
+  --gray-3: #404040;
+  --accent: #ffffff;
+}
+
 body {
   margin: 0;
   padding: 0;
-
-  background: radial-gradient(circle, #b3b1b1 40%, #000000);
-
+  min-height: 100vh;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  color: #fff;
+  background: var(--surface-0);
+  background-image: radial-gradient(
+      circle at 0% 0%,
+      rgba(255, 255, 255, 0.05) 0,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(255, 255, 255, 0.05) 0,
+      transparent 50%
+    ),
+    radial-gradient(at 100% 100%, rgba(255, 255, 255, 0.05) 0, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(255, 255, 255, 0.05) 0, transparent 50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  font-family: Quicksand;
-  color: #fff;
+  background-attachment: fixed;
 }
+
 .app {
-  width: 80vw;
+  width: 85vw;
   min-height: 90vh;
-  border-radius: 1rem;
-  background-color: #1a1a1a;
+  border-radius: 32px;
+  background: var(--surface-1);
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(24px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 8px 16px rgba(0, 0, 0, 0.6),
+    0 32px 64px -12px rgba(0, 0, 0, 0.8);
 
-  background: rgba(34, 34, 34, 0.85);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 32px;
+    padding: 1px;
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.15),
+      rgba(255, 255, 255, 0.075),
+      rgba(255, 255, 255, 0.05)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
 
   .title {
-    font-weight: 300;
-    font-size: 3rem;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    font-size: 3.5rem;
+    margin: 3rem 0 2rem;
+    background: linear-gradient(to right, var(--gray-1) 20%, var(--gray-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.03em;
+    text-align: center;
+    line-height: 1.1;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.05)
+      );
+      border-radius: 1px;
+    }
   }
+
   .input_section {
     width: 90%;
     display: flex;
     justify-content: space-evenly;
     margin: 2rem;
-    font-weight: 300;
+    font-weight: 400;
+
     .section_one {
       width: 100%;
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
       flex-direction: column;
-      font-size: 1.5rem;
+      gap: 2rem;
+      padding: 3rem;
+      background: var(--surface-2);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+
+      p {
+        margin: 0;
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        position: relative;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+        &:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+
+        strong {
+          font-size: 2.5rem;
+          color: var(--gray-1);
+          font-weight: 600;
+          letter-spacing: -0.02em;
+          line-height: 1;
+          min-width: 180px;
+          transition: all 0.3s ease;
+        }
+
+        span {
+          font-size: 1.1rem;
+          color: var(--gray-2);
+          line-height: 1.5;
+          transition: all 0.3s ease;
+        }
+
+        &:hover {
+          strong {
+            color: var(--gray-1);
+            transform: translateX(8px);
+          }
+          span {
+            color: var(--gray-1);
+          }
+        }
+      }
+
       .section_one_small {
         display: none;
       }
     }
   }
-  .loan_section {
-    width: 90%;
-    margin-bottom: 2rem;
-  }
+
+  .loan_section,
   .emi_section {
     width: 90%;
+    margin-bottom: 2rem;
+    background: var(--surface-2);
+    border-radius: 24px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.05),
+        transparent
+      );
+    }
   }
 }
+
 @media (max-width: 445px) {
   .app {
     width: 95vw;
+    border-radius: 24px;
+
     .title {
-      margin-bottom: 1rem;
-      font-size: 2rem;
+      margin: 2rem 0 1.5rem;
+      font-size: 2.5rem;
+
+      &::after {
+        width: 60px;
+        height: 1px;
+      }
     }
+
     .input_section {
       flex-direction: column;
       margin-top: 0;
+
       .section_one {
-        font-size: 1rem;
+        padding: 1.5rem;
+
         p {
           display: none;
         }
         .section_one_small {
-          display: block;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
           text-align: center;
+
+          strong {
+            font-size: 2rem;
+            color: var(--gray-1);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+          }
+
+          span {
+            font-size: 1rem;
+            color: var(--gray-2);
+          }
+        }
+      }
+    }
+
+    .loan_section,
+    .emi_section {
+      padding: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    .input_section {
+      .section_one {
+        padding: 2rem;
+
+        p {
+          flex-direction: column;
+          gap: 0.5rem;
+          padding-bottom: 1.5rem;
+
+          strong {
+            font-size: 2rem;
+            min-width: auto;
+          }
+
+          span {
+            font-size: 1rem;
+          }
         }
       }
     }

@@ -9,26 +9,56 @@ const LoanForm = ({ handleCalculate, handleReset }) => {
   };
   return (
     <form className="section_two" onSubmit={onCalculate}>
-      <input type="number" placeholder="Amount" name="amount" required />
-      <input
-        type="number"
-        placeholder="Interest Rate"
-        step={0.01}
-        name="interestRate"
-        required
-      />
-      <input type="number" placeholder="Tenure" name="tenure" required />
-      <input
-        type="number"
-        placeholder="Extra Principle (optional)"
-        name="extraPrinciple"
-      />
-      <input
-        type="number"
-        placeholder="From Month (if entering extra principle)"
-        name="fromMonth"
-        min={1}
-      />
+      <div className="input-group">
+        <label>Loan Amount</label>
+        <input
+          type="number"
+          placeholder="Enter amount"
+          name="amount"
+          required
+        />
+      </div>
+
+      <div className="input-group">
+        <label>Interest Rate (%)</label>
+        <input
+          type="number"
+          placeholder="Enter interest rate"
+          step={0.01}
+          name="interestRate"
+          required
+        />
+      </div>
+
+      <div className="input-group">
+        <label>Loan Tenure (Years)</label>
+        <input
+          type="number"
+          placeholder="Enter loan tenure"
+          name="tenure"
+          required
+        />
+      </div>
+
+      <div className="input-group">
+        <label>Extra Principal (Optional)</label>
+        <input
+          type="number"
+          placeholder="Enter extra principal amount"
+          name="extraPrinciple"
+        />
+      </div>
+
+      <div className="input-group">
+        <label>Start Extra Principal From Month (Optional)</label>
+        <input
+          type="number"
+          placeholder="Enter starting month for extra principal"
+          name="fromMonth"
+          min={1}
+        />
+      </div>
+
       <div className="button_section">
         <button type="reset" className="button reset" onClick={onReset}>
           Reset
@@ -40,4 +70,5 @@ const LoanForm = ({ handleCalculate, handleReset }) => {
     </form>
   );
 };
+
 export default LoanForm;

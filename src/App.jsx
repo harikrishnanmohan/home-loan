@@ -3,7 +3,6 @@ import { useState } from "react";
 import EmiTable from "./component/EmiTable";
 import LoanTable from "./component/LoanTable";
 import LoanForm from "./component/LoanForm";
-
 import { toIndianCurrency } from "./util";
 
 import "./App.scss";
@@ -35,10 +34,10 @@ function App() {
         loanShare = tempLoanAmount;
         tempLoanAmount = 0;
       } else {
-        tempLoanAmount = tempLoanAmount - loanShare;
+        tempLoanAmount -= loanShare;
 
         if (fromMonth && month >= fromMonth) {
-          tempLoanAmount = tempLoanAmount - extraPrinciple;
+          tempLoanAmount -= extraPrinciple;
           totalExtraPrinciple += extraPrinciple;
         }
       }
@@ -56,6 +55,7 @@ function App() {
             ? extraPrinciple
             : 0,
       });
+
       month++;
     }
 
@@ -63,14 +63,12 @@ function App() {
   };
 
   const handleCalculate = (e) => {
-    e.preventDefault();
-
     const data = new FormData(e.currentTarget);
-    const loanAmount = data.get("amount");
+    const loanAmount = data.get("amount").replace(/,/g, "");
     const interestRate = data.get("interestRate");
     const tenure = data.get("tenure");
-    const extraPrinciple = +data.get("extraPrinciple") || 0;
-    const fromMonth = data.get("fromMonth");
+    const extraPrinciple = +data.get("extraPrinciple").replace(/,/g, "") || 0;
+    const fromMonth = +data.get("fromMonth") || 0;
 
     const interestRateByMonth = interestRate / 12 / 100;
     const tenureByMonth = tenure * 12;
@@ -135,11 +133,16 @@ function App() {
           ? 0
           : `${month2 - 1 - (month - 1)} (${Math.floor(
               (month2 - 1 - (month - 1)) / 12
-            )}.${(month2 - 1 - (month - 1)) % 12}Years)`,
+            )}.${(month2 - 1 - (month - 1)) % 12} Years)`,
     });
   };
 
   const handleReset = () => {
+    setEmi([]);
+    setLoanInfo({});
+  };
+
+  const handleInputChange = () => {
     setEmi([]);
     setLoanInfo({});
   };
@@ -150,14 +153,18 @@ function App() {
       <div className="input_section">
         <div className="section_one">
           <p>Plan Smart,</p>
-          <p>Borrow Wisely </p>
-          <p>B– Your Home Loan, </p>
+          <p>Borrow Wisely</p>
+          <p>B– Your Home Loan,</p>
           <p>Calculated!</p>
           <p className="section_one_small">
             Plan Smart, Borrow Wisely, B– Your Home Loan, Calculated!
           </p>
         </div>
-        <LoanForm handleCalculate={handleCalculate} handleReset={handleReset} />
+        <LoanForm
+          handleCalculate={handleCalculate}
+          handleReset={handleReset}
+          onInputChange={handleInputChange}
+        />
       </div>
       {emi.length > 0 && (
         <>

@@ -33,6 +33,11 @@
     transform: scale(1);
   }
 }
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--surface-2) inset !important;
+  -webkit-text-fill-color: #fff !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
 
 .section_two {
   width: 100%;
@@ -42,6 +47,7 @@
   flex-direction: column;
   gap: 2rem;
   padding: 2rem;
+  padding-right: 0rem;
   animation: fadeInUp 0.6s ease-out;
 
   .input-group {
@@ -79,7 +85,7 @@
     }
 
     input {
-      width: 100%;
+      width: calc(100% - 3rem);
       background: var(--surface-2);
       border: 1px solid var(--gray-3);
       height: 3.5rem;
